@@ -6,8 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ImdbService {
-
     @GET(".")
-    fun getCinema(@Query("apikey") apiKey: String, @Query("s") title: String):
+    fun getCinema(@Query("apikey") apiKey: String , @Query("s")title:String):
             Call<CinemaSearchModel>
 }
