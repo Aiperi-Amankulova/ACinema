@@ -5,9 +5,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
 
-    private var service:  ImdbService? = null
+    private var service: ImdbService? = null
+
     fun getService(): ImdbService? {
-        if (service == null ) service = buildRetrofit()
+        if (service == null) service = buildRetrofit()
 
         return service
     }

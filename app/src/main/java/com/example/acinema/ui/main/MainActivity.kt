@@ -30,20 +30,23 @@ class MainActivity : BaseActivity() {
     private fun getSearch(text: String) {
         RetrofitBuilder.getService()?.getCinema("a2bc6505",text)
 
-            ?.enqueue(object : Callback<CinemaSearchModel>{
+            ?.enqueue(object : Callback<CinemaSearchModel> {
                 override fun onResponse(
                     call: Call<CinemaSearchModel>,
                     response: Response<CinemaSearchModel>
                 ) {
-                    if (response.isSuccessful && response.body() != null){
+                    if (response.isSuccessful && response.body() != null) {
                         val arrays = response.body()?.search?.map { it.title }?.toTypedArray()
-                        if (response.isSuccessful && response.body() != null){
+                        if (response.isSuccessful && response.body() != null) {
                             adapter.submitList(response.body()?.search)
                         }
                     }
                 }
+
                 override fun onFailure(call: Call<CinemaSearchModel>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.localizedMessage , Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, t.localizedMessage, Toast.LENGTH_LONG).show()
                 }
-            })
-    } }
+            }
+            )
+    }
+}
