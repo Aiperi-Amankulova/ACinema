@@ -1,7 +1,6 @@
 package com.example.acinema.ui.main
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import com.example.acinema.R
@@ -28,14 +27,14 @@ class MainActivity : BaseActivity() {
     }
 
     private fun getSearch(text: String) {
-        RetrofitBuilder.getService()?.getCinema("a2bc6505",text)
+        RetrofitBuilder.getService()?.getCinema("  ",text)
 
             ?.enqueue(object : Callback<CinemaSearchModel> {
                 override fun onResponse(
                     call: Call<CinemaSearchModel>,
                     response: Response<CinemaSearchModel>
                 ) {
-                    if (response.isSuccessful && response.body() != null) {
+                    if (response.isSuccessful && response.body() != null){
                         val arrays = response.body()?.search?.map { it.title }?.toTypedArray()
                         if (response.isSuccessful && response.body() != null) {
                             adapter.submitList(response.body()?.search)
